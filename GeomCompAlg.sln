@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeomCompAlg", "GeomCompAlg\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03HW_CercArieMin", "03HW_CercArieMin\03HW_CercArieMin.csproj", "{752ACB86-847E-4218-8151-D497C0032C65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW02_TriunghilArieMin", "HW02_TriunghilArieMin\HW02_TriunghilArieMin.csproj", "{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{752ACB86-847E-4218-8151-D497C0032C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
