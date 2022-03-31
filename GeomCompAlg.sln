@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeomCompAlg", "GeomCompAlg\GeomCompAlg.csproj", "{3C074948-43E6-4A8E-88C5-5098694ECCAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03HW_CercArieMin", "03HW_CercArieMin\03HW_CercArieMin.csproj", "{752ACB86-847E-4218-8151-D497C0032C65}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW02_TriunghilArieMin", "HW02_TriunghilArieMin\HW02_TriunghilArieMin.csproj", "{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW01_DreptunghiArieMin", "HW01_DreptunghiArieMin\HW01_DreptunghiArieMin.csproj", "{FE91835A-CACB-4841-B69D-1475E1723895}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW04_ConvexHull-AlgSimplu", "HW04_ConvexHull-AlgSimplu\HW04_ConvexHull-AlgSimplu.csproj", "{A01C4A19-17E2-4293-AD6B-46133DB44590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW03_CercArieMin", "HW03_CercArieMin\HW03_CercArieMin.csproj", "{273DB274-177C-4426-949C-144D33B7E5C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{752ACB86-847E-4218-8151-D497C0032C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{752ACB86-847E-4218-8151-D497C0032C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D765A0D9-F71C-4D2C-B1BF-277548A69ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273DB274-177C-4426-949C-144D33B7E5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273DB274-177C-4426-949C-144D33B7E5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273DB274-177C-4426-949C-144D33B7E5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273DB274-177C-4426-949C-144D33B7E5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
