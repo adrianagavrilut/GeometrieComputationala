@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeomCompAlg", "GeomCompAlg\GeomCompAlg.csproj", "{3C074948-43E6-4A8E-88C5-5098694ECCAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03HW_CercArieMin", "03HW_CercArieMin\03HW_CercArieMin.csproj", "{752ACB86-847E-4218-8151-D497C0032C65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C074948-43E6-4A8E-88C5-5098694ECCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752ACB86-847E-4218-8151-D497C0032C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752ACB86-847E-4218-8151-D497C0032C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752ACB86-847E-4218-8151-D497C0032C65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB779C20-D391-4785-B0A7-E9B37DE88BB8}
+	EndGlobalSection
+EndGlobal
