@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW02_TriunghilArieMin", "HW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW01_DreptunghiArieMin", "HW01_DreptunghiArieMin\HW01_DreptunghiArieMin.csproj", "{FE91835A-CACB-4841-B69D-1475E1723895}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW04_ConvexHull-AlgSimplu", "HW04_ConvexHull-AlgSimplu\HW04_ConvexHull-AlgSimplu.csproj", "{A01C4A19-17E2-4293-AD6B-46133DB44590}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FE91835A-CACB-4841-B69D-1475E1723895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE91835A-CACB-4841-B69D-1475E1723895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE91835A-CACB-4841-B69D-1475E1723895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A01C4A19-17E2-4293-AD6B-46133DB44590}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
