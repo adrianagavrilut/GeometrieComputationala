@@ -94,7 +94,7 @@ namespace HW02_TriunghilArieMin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 434);
+            this.ClientSize = new System.Drawing.Size(853, 434);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCompute);
             this.Controls.Add(this.buttonDraw);
