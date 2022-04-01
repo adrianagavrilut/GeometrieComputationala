@@ -74,7 +74,7 @@ namespace HW04_ConvexHull_AlgSimplu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 463);
+            this.ClientSize = new System.Drawing.Size(835, 492);
             this.Controls.Add(this.buttonCompute);
             this.Controls.Add(this.buttonDraw);
             this.Controls.Add(this.textBoxN);
