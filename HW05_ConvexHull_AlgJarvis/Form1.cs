@@ -69,7 +69,7 @@ namespace HW05_ConvexHull_AlgJarvis
                 int pArbitrar = (hull[hull.Count - 1] + 1) % n;//un punct aleator care sa fie difeit de ultimul pct de pe invelitoare( %n ca sa nu treaca de n, ci sa apartina listei)
                 for (int i = 0; i < n; i++)
                 {
-                    //sensul trig intre ultimul punct dun hull, fiecare punct din lista si un punct aleator
+                    //sensul trig intre ultimul punct din hull, fiecare punct din lista si un punct aleator
                     if (DetSensTrigonometric(points[hull[hull.Count - 1]].X, points[hull[hull.Count - 1]].Y, points[i].X, points[i].Y, points[pArbitrar].X, points[pArbitrar].Y) > 0)
                     {
                         pArbitrar = i;
