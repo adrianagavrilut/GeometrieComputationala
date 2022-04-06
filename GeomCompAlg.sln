@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW03_CercArieMin", "HW03_Ce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW05_ConvexHull_AlgJarvis", "HW05_ConvexHull_AlgJarvis\HW05_ConvexHull_AlgJarvis.csproj", "{D6ED196B-C637-4779-9A5A-CE1295A05D49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygon", "HW06_DrawPolygon\HW06_DrawPolygon.csproj", "{648685A3-6A83-40D2-9565-300FA448D1C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D6ED196B-C637-4779-9A5A-CE1295A05D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6ED196B-C637-4779-9A5A-CE1295A05D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6ED196B-C637-4779-9A5A-CE1295A05D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{648685A3-6A83-40D2-9565-300FA448D1C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648685A3-6A83-40D2-9565-300FA448D1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648685A3-6A83-40D2-9565-300FA448D1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648685A3-6A83-40D2-9565-300FA448D1C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
