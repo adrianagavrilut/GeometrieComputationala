@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW05_ConvexHull_AlgJarvis",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygon", "HW06_DrawPolygon\HW06_DrawPolygon.csproj", "{648685A3-6A83-40D2-9565-300FA448D1C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygonV2", "HW06_DrawPolygonV2\HW06_DrawPolygonV2.csproj", "{69FB8F12-6CEF-45C5-981C-A23C8A88D1B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygonV3", "HW06_DrawPolygonV3\HW06_DrawPolygonV3.csproj", "{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{648685A3-6A83-40D2-9565-300FA448D1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648685A3-6A83-40D2-9565-300FA448D1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648685A3-6A83-40D2-9565-300FA448D1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FB8F12-6CEF-45C5-981C-A23C8A88D1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FB8F12-6CEF-45C5-981C-A23C8A88D1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FB8F12-6CEF-45C5-981C-A23C8A88D1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FB8F12-6CEF-45C5-981C-A23C8A88D1B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

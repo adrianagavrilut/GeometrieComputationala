@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HW06_DrawPolygon
+namespace HW06_DrawPolygonV3
 {
     public partial class Form1 : Form
     {
@@ -20,7 +20,6 @@ namespace HW06_DrawPolygon
         Graphics g;
         List<Point> points = new List<Point>();
         int contor = 1;
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         List<List<Point>> polygons = new List<List<Point>>();
         int contorPoligoane = -1;
         bool drawingMode = false;
@@ -32,19 +31,6 @@ namespace HW06_DrawPolygon
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            //Graphics g = panel1.CreateGraphics();
-            //Pen pen = new Pen(Color.Black, 3);
-            //Point aux = new Point(e.X, e.Y);
-            //g.DrawString(contor.ToString(), new Font(FontFamily.GenericSansSerif, 10), new SolidBrush(Color.Black), aux.X - 20, aux.Y - 20);
-            //contor++;
-            //g.DrawEllipse(pen, aux.X - 2, aux.Y - 2, 4, 4);
-            //Pen linie = new Pen(Color.DarkViolet, 2);
-            //if (points.Count != 0)
-            //{
-            //    g.DrawLine(linie, aux, points[points.Count - 1]);
-            //}
-            //points.Add(aux);
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             Graphics g = panel1.CreateGraphics();
             if (drawingMode)
             {
@@ -56,7 +42,7 @@ namespace HW06_DrawPolygon
                     if ((aux.X >= polygons[contorPoligoane][0].X - 4 && aux.X <= (polygons[contorPoligoane][0].X + 4)) && (aux.Y >= polygons[contorPoligoane][0].Y - 4 && aux.Y <= (polygons[contorPoligoane][0].Y + 4)))
                     {
                         drawingMode = false;
-                        buttonDrawingMode.BackColor = Color.LightSkyBlue;
+                        button1.BackColor = Color.LightSkyBlue;
                     }
                     if (drawingMode)
                     {
@@ -83,7 +69,7 @@ namespace HW06_DrawPolygon
             }
         }
 
-        private void buttonDrawingMode_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (!drawingMode)
             {
@@ -92,7 +78,7 @@ namespace HW06_DrawPolygon
                 contor = 1;
                 contorPoligoane++;
                 drawingMode = true;
-                buttonDrawingMode.BackColor = Color.LightCyan;
+                button1.BackColor = Color.LightCyan;
             }
             else
             {
@@ -110,7 +96,7 @@ namespace HW06_DrawPolygon
                     contorPoligoane--;
                 }
                 drawingMode = false;
-                buttonDrawingMode.BackColor = Color.LightSkyBlue;
+                button1.BackColor = Color.LightSkyBlue;
             }
         }
     }
