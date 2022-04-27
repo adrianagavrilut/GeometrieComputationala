@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygonV2", "HW06_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW06_DrawPolygonV3", "HW06_DrawPolygonV3\HW06_DrawPolygonV3.csproj", "{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW07_Triangulare_Diagonale", "HW07_Triangulare_Diagonale\HW07_Triangulare_Diagonale.csproj", "{F4BD2D57-9FD8-4E2C-9909-4128C52C3649}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{554711C1-DDFD-4D7E-8E32-A4C70726BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BD2D57-9FD8-4E2C-9909-4128C52C3649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4BD2D57-9FD8-4E2C-9909-4128C52C3649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4BD2D57-9FD8-4E2C-9909-4128C52C3649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4BD2D57-9FD8-4E2C-9909-4128C52C3649}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
