@@ -30,7 +30,7 @@ namespace HW07_Triangulare_Diagonale
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDrawMode = new System.Windows.Forms.Button();
             this.buttonFinishUp = new System.Windows.Forms.Button();
             this.buttonTriang = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,15 +45,15 @@ namespace HW07_Triangulare_Diagonale
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // button1
+            // buttonDrawMode
             // 
-            this.button1.Location = new System.Drawing.Point(639, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "DrawMode";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonDrawMode.Location = new System.Drawing.Point(639, 13);
+            this.buttonDrawMode.Name = "buttonDrawMode";
+            this.buttonDrawMode.Size = new System.Drawing.Size(75, 23);
+            this.buttonDrawMode.TabIndex = 1;
+            this.buttonDrawMode.Text = "DrawMode";
+            this.buttonDrawMode.UseVisualStyleBackColor = true;
+            this.buttonDrawMode.Click += new System.EventHandler(this.buttonDrawMode_Click);
             // 
             // buttonFinishUp
             // 
@@ -84,7 +84,7 @@ namespace HW07_Triangulare_Diagonale
             this.ClientSize = new System.Drawing.Size(740, 367);
             this.Controls.Add(this.buttonTriang);
             this.Controls.Add(this.buttonFinishUp);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonDrawMode);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1TriangulareDiag";
@@ -95,7 +95,7 @@ namespace HW07_Triangulare_Diagonale
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDrawMode;
         private System.Windows.Forms.Button buttonFinishUp;
         private System.Windows.Forms.Button buttonTriang;
     }

@@ -19,7 +19,7 @@ namespace HW07_Triangulare_Diagonale
 
         Graphics g;
         List<Point> points = new List<Point>();
-        int contor = 1;
+        int contor = 0;
         bool drawingMode = false;
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -46,12 +46,12 @@ namespace HW07_Triangulare_Diagonale
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonDrawMode_Click(object sender, EventArgs e)
         {
             if (!drawingMode)
             {
                 drawingMode = true;
-                button1.Enabled = false;
+                buttonDrawMode.Enabled = false;
                 buttonFinishUp.Enabled = true;
             }
         }
@@ -71,103 +71,178 @@ namespace HW07_Triangulare_Diagonale
 
         List<int> diagonale = new List<int>();
 
+
         private void buttonTriang_Click(object sender, EventArgs e)
         {
             Graphics g = panel1.CreateGraphics();
             Pen penTR = new Pen(Color.Purple, 2);
             int contorDiag = 0;
-            for (int i = 0; i < points.Count - 3; i++)
+            for (int i = 0; i < points.Count - 2; i++)
             {
-                for (int j = i + 2; j < points.Count - 1; j++)
+                for (int j = i + 2; j < points.Count; j++)
                 {
-                    //g.DrawLine(penTR, points[i], points[j]);
-
                     if (i == 0 && j == points.Count - 1)
                     {
                         break;
                     }
-                    if (!IntersectieLaturi(points[i], points[j], points[i + 1], points[j + 1]) && !IntersectieLaturi(points[i], points[j], points[i - 1], points[j - 1]) &&
-                        !IntersectieDiagonale(points[i], points[j]) &&
-                        InteriorPoligon(points[i], points[j]))
+                    if (!IntersecteazaLaturi(points[i], points[j], i, j) &&
+                        !IntersecteazaDiagonale(points[i], points[j]) &&
+                        ApartinePoligon(points[i], points[j], i, j))
                     {
                         diagonale.Add(i);
                         diagonale.Add(j);
                         g.DrawLine(penTR, points[i], points[j]);
                         contorDiag++;
                     }
-                    if (contorDiag == points.Count - 3)
-                    {
-                        return;
-                    }
                 }
             }
         }
 
-        private bool IntersectieLaturi(Point a1, Point b1, Point a2, Point b2)
+        private bool IntersecteazaLaturi(Point a, Point b, int pozA, int pozB)
         {
-            if (ProdusDeterminant(b2, b1, a1, a2) <= 0 && ProdusDeterminant(a2, a1, b1, b2) <= 0)
+            bool toReturn = false;
+            for (int i = 0; i < points.Count; i++)
             {
-                return true;
+                float xIntersectie, yIntersectie;
+                if (DeterminaIntersectiaG(a, b, points[i], points[(i + 1) % points.Count], out xIntersectie, out yIntersectie))
+                {
+                    if (!((Math.Round(xIntersectie) == a.X && Math.Round(yIntersectie) == a.Y) || (Math.Round(xIntersectie) == b.X && Math.Round(yIntersectie) == b.Y)))
+                    {
+                        toReturn = true;
+                    }
+                }
             }
-            return false;
+            return toReturn;
         }
 
-        private int ProdusDeterminant(Point b2, Point b1, Point a1, Point a2)
-        {
-            return ValoareDeterminant(b2, b1, a1) * ValoareDeterminant(b2, b1, a2);
-        }
+        //private int ProdusDeterminant(Point b2, Point b1, Point a1, Point a2)
+        //{
+        //    return ValoareDeterminant(b2, b1, a1) * ValoareDeterminant(b2, b1, a2);
+        //}
 
         private int ValoareDeterminant(Point a, Point b , Point c)
         {
             return a.X * b.Y + b.X * c.Y + c.X * a.Y - c.X * b.Y - a.X * c.Y - b.X * a.Y;
         }
 
-        private bool IntersectieDiagonale(Point a, Point b)
+        private bool IntersecteazaDiagonale(Point a, Point b)
         {
+            bool toReturn = false;
             for (int i = 0; i < diagonale.Count - 1; i++)
             {
-                if (ProdusDeterminant(b, a, points[diagonale[i]], points[diagonale[i + 1]]) <= 0 && ProdusDeterminant(points[diagonale[i + 1]], points[diagonale[i]], a, b) <= 0)
+                float xIntersectie, yIntersectie;
+                if (DeterminaIntersectiaG(a, b, points[diagonale[i]], points[diagonale[i + 1]], out xIntersectie, out yIntersectie))
+                {
+                    if (!((Math.Round(xIntersectie) == a.X && Math.Round(yIntersectie) == a.Y) || (Math.Round(xIntersectie) == b.X && Math.Round(yIntersectie) == b.Y)))
+                    {
+                        toReturn = true;
+                    }
+                }
+            }
+            return toReturn;
+        }
+
+        private bool ApartinePoligon(Point a, Point b, int pozA, int pozB)
+        {
+            //segmentul  ab apartine poligonului daca cel putin 1 punct apartine poligonului
+            Point v1 = points[(pozA + 1) % points.Count];
+            Point v2 = points[(pozA - 1) < 0 ? points.Count - 1 : pozA - 1];
+            if (ValoareDeterminant(v2, a, v1) < 0)
+            {
+                if(ValoareDeterminant(a, b, v1) > 0 && ValoareDeterminant(a, v2, b) > 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (ValoareDeterminant(a, b, v1) < 0 && ValoareDeterminant(a, v2, b) < 0)
                 {
                     return true;
                 }
             }
             return false;
         }
-        private bool InteriorPoligon(Point a, Point b)
+
+        static public float DeterminantG(float a1, float b1, float a2, float b2)
         {
-            int iSus = -1, iJos = -1, iSt = -1, iDr = -1;
-            //cel mai de sus pct
-            //cel mai de jos
-            //cel mai din stanga
-            //cel mai din drapta
-            for (int i = 0; i < points.Count; i++)
+            return a1 * b2 - a2 * b1;
+        }
+
+        static public bool RezolvaSistemulG(float a1, float b1, float c1, float a2, float b2, float c2, ref float x, ref float y)
+        {
+            x = 0;
+            y = 0;
+            float d = DeterminantG(a1, b1, a2, b2);
+            if (d == 0)
+                return false;
+            else
             {
-                if (iSus < points[i].Y)
-                {
-                    iSus = i;
-                }
-                if (iJos > points[i].Y)
-                {
-                    iJos = i;
-                }
-                if (iSt < points[i].X)
-                {
-                    iSt = i;
-                }
-                if (iDr > points[i].X)
-                {
-                    iDr = i;
-                }
+                x = DeterminantG(c1, b1, c2, b2) / d;
+                y = DeterminantG(a1, c1, a2, c2) / d;
+
+                return true;
             }
-            //a, b in interior
-            for (int i = 0; i < points.Count; i++)
+        }
+
+        public bool DeterminaIntersectiaG(Point p11, Point p12, Point p21, Point p22, out float x, out float y)
+        {
+            x = 0;
+            y = 0;
+            bool exista = false;
+            bool orizontal1 = false, orizontal2 = false, vertical1 = false, vertical2 = false;
+            int ok = 0;
+            if (p11.X == p12.X)
+                vertical1 = true;
+            if (p11.Y == p12.Y)
+                orizontal1 = true;
+            if (p21.X == p22.X)
+                vertical2 = true;
+            if (p21.Y == p22.Y)
+                orizontal2 = true;
+            if (vertical1 && orizontal2)
+                if (RezolvaSistemulG(1, 0, p11.X, 0, 1, p21.Y, ref x, ref y) == true)
+                    exista = true;
+            if (orizontal1 && vertical2)
+                if (RezolvaSistemulG(0, 1, p11.Y, 1, 0, p21.X, ref x, ref y) == true)
+                    exista = true;
+            if (orizontal1 == true && (vertical2 == false && orizontal2 == false))
+                if (RezolvaSistemulG(0, 1, p11.Y, ((float)(p22.Y - p21.Y)) / (p22.X - p21.X), -1, ((float)(p21.X * p22.Y - p22.X * p21.Y)) / (p22.X - p21.X), ref x, ref y) == true)
+                    exista = true;
+            if (vertical1 == true && (vertical2 == false && orizontal2 == false))
+                if (RezolvaSistemulG(1, 0, p11.X, ((float)(p22.Y - p21.Y)) / (p22.X - p21.X), -1, ((float)(p21.X * p22.Y - p22.X * p21.Y)) / (p22.X - p21.X), ref x, ref y) == true)
+                    exista = true;
+            if (orizontal2 == true && (vertical1 == false && orizontal1 == false))
+                if (RezolvaSistemulG(((float)(p12.Y - p11.Y)) / (p12.X - p11.X), -1, ((float)(p11.X * p12.Y - p12.X * p11.Y)) / (p12.X - p11.X), 0, 1, p21.Y, ref x, ref y) == true)
+                    exista = true;
+            if (vertical2 == true && (vertical1 == false && orizontal1 == false))
+                if (RezolvaSistemulG(((float)(p12.Y - p11.Y)) / (p12.X - p11.X), -1, ((float)(p11.X * p12.Y - p12.X * p11.Y)) / (p12.X - p11.X), 1, 0, p21.X, ref x, ref y) == true)
+                    exista = true;
+            if ((orizontal1 == false && vertical1 == false) && (orizontal2 == false && vertical2 == false))
+                if (RezolvaSistemulG(((float)(p12.Y - p11.Y)) / (p12.X - p11.X), -1,
+                    ((float)(p11.X * p12.Y - p12.X * p11.Y)) / (p12.X - p11.X),
+                    ((float)(p22.Y - p21.Y)) / (p22.X - p21.X), -1,
+                    ((float)(p21.X * p22.Y - p22.X * p21.Y)) / (p22.X - p21.X), ref x, ref y) == true)
+                    exista = true;
+            if (exista == true)
             {
-                if (a.Y > points[iSus].Y && a.Y < points[iJos].Y && a.X > points[iSt].X && a.X < points[iDr].Y && b.Y > points[iSus].Y && b.Y < points[iJos].Y && b.X > points[iSt].X && b.X < points[iDr].Y)
-                {
+                if ((p11.X <= x && x <= p12.X) || (p12.X <= x && x <= p11.X))
+                    ok++;
+                if ((p21.X <= x && x <= p22.X) || (p22.X <= x && x <= p21.X))
+                    ok++;
+                if ((p11.Y <= y && y <= p12.Y) || (p12.Y <= y && y <= p11.Y))
+                    ok++;
+                if ((p21.Y <= y && y <= p22.Y) || (p22.Y <= y && y <= p21.Y))
+                    ok++;
+                if (ok == 4)
                     return true;
-                }
+                else
+                    return false;
+
+
             }
-            return false;
+            else
+                return false;
         }
     }
 }
