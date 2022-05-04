@@ -69,8 +69,8 @@ namespace HW07_Triangulare_Diagonale
             }
         }
 
-        List<int> diagonale = new List<int>();
 
+        List<int> diagonale = new List<int>();
 
         private void buttonTriang_Click(object sender, EventArgs e)
         {
@@ -238,8 +238,6 @@ namespace HW07_Triangulare_Diagonale
                     return true;
                 else
                     return false;
-
-
             }
             else
                 return false;
