@@ -87,7 +87,7 @@ namespace HW07_Triangulare_DiagonaleV2
             this.Controls.Add(this.buttonDrawMode);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "Form1TriangulareDiag";
+            this.Text = "Form1TriangulareDiagV2";
             this.ResumeLayout(false);
 
         }
