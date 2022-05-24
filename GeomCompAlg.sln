@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW08_Triangulare_Otectomie"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW09_PartitionarePoligoaneMonotone", "HW09_PartitionarePoligoaneMonotone\HW09_PartitionarePoligoaneMonotone.csproj", "{8DC78E35-9769-4844-8BA9-32BEE99FF317}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW10_TriangularePoligonMonoton", "HW10_TriangularePoligonMonoton\HW10_TriangularePoligonMonoton.csproj", "{2C57D043-42C7-4EF7-8395-F3EBDB3CE2B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8DC78E35-9769-4844-8BA9-32BEE99FF317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DC78E35-9769-4844-8BA9-32BEE99FF317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DC78E35-9769-4844-8BA9-32BEE99FF317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C57D043-42C7-4EF7-8395-F3EBDB3CE2B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C57D043-42C7-4EF7-8395-F3EBDB3CE2B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C57D043-42C7-4EF7-8395-F3EBDB3CE2B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C57D043-42C7-4EF7-8395-F3EBDB3CE2B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
