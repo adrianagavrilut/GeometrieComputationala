@@ -23,30 +23,28 @@ namespace HW10_TriangularePoligonMonoton
         List<Tuple<int, int>> diagonals = new List<Tuple<int, int>>();
         List<List<int>> polygons = new List<List<int>>();
 
-        int contor = 1;
+        int contor = 0;
         bool drawingMode = false;
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
-            points.Add(new Point(266, 81));
-            points.Add(new Point(300, 127));
-            points.Add(new Point(358, 55));
-            points.Add(new Point(388, 105));
-            points.Add(new Point(451, 74));
-            points.Add(new Point(435, 215));
-            points.Add(new Point(357, 152));
-            points.Add(new Point(304, 293));
-            points.Add(new Point(282, 146));
-            points.Add(new Point(221, 162));
-            Pen pen = new Pen(Color.Black, 2); e.Graphics.DrawLines(pen, points.ToArray());
-            for (int i = 0; i < points.Count; i++)
-            {
-                g.DrawString(contor.ToString(), new Font(FontFamily.GenericSansSerif, 10), new SolidBrush(Color.Black), points[i].X - 20, points[i].Y - 20);
-                contor++;
-            }
-            
-
+            //points.Add(new Point(266, 81));
+            //points.Add(new Point(300, 127));
+            //points.Add(new Point(358, 55));
+            //points.Add(new Point(388, 105));
+            //points.Add(new Point(451, 74));
+            //points.Add(new Point(435, 215));
+            //points.Add(new Point(357, 152));
+            //points.Add(new Point(304, 293));
+            //points.Add(new Point(282, 146));
+            //points.Add(new Point(221, 162));
+            //Pen pen = new Pen(Color.Black, 2); e.Graphics.DrawLines(pen, points.ToArray());
+            //for (int i = 0; i < points.Count; i++)
+            //{
+            //    g.DrawString(contor.ToString(), new Font(FontFamily.GenericSansSerif, 10), new SolidBrush(Color.Black), points[i].X - 20, points[i].Y - 20);
+            //    contor++;
+            //}
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
@@ -323,7 +321,7 @@ namespace HW10_TriangularePoligonMonoton
             {
                 determinantPoligoane[i] = 1;
             }
-            for (int i = 0; i < diagonals.Count - 1; i++)
+            for (int i = 0; i < diagonals.Count - 1; i++)//-1 daca se dubleaza
             {
                 if (diagonals[i].Item1 < diagonals[i].Item2) //diag de forma [2, 9]
                 {
@@ -380,133 +378,206 @@ namespace HW10_TriangularePoligonMonoton
                 string result = "";
                 for (int j = 0; j < polygons[i].Count; j++)
                 {
-                    result += (polygons[i][j] + 1) + " ";
+                    result += polygons[i][j] + " ";
                 }
                 listBoxPoligoane.Items.Add(result);
             }
+        }
+
+        private bool intersecteazaAlteDiagonale(List<Point> punctePoligonCurent, List<Tuple<int, int>> diagonale, int i, int j)
+        {
+            bool intersectie = false;
+            for (int k = 0; k < diagonale.Count; k++)
+            {
+                if (i != diagonale[k].Item1 && i != diagonale[k].Item2 && j != diagonale[k].Item1 && j != diagonale[k].Item2 && se_intersecteaza(punctePoligonCurent[i], punctePoligonCurent[j], punctePoligonCurent[diagonale[k].Item1], punctePoligonCurent[diagonale[k].Item2]))
+                {
+                    intersectie = true;
+                    break;
+                }
+            }
+            return intersectie;
         }
 
         private void buttonTriangulate_Click(object sender, EventArgs e)
         {
             Graphics g = panel1.CreateGraphics();
             Pen penTriang = new Pen(Color.Red, 2);
-            for (int i = 0; i < /*1*/polygons.Count; i++) //parcurg listele de poligoane
+            for (int i = 0; i < polygons.Count; i++) //parcurg listele de poligoane
             {
                 List<int> varfuriPoligonCurent = new List<int>();
                 for (int j = 0; j < polygons[i].Count; j++) //parcurg elem. dintr-o lista, adica dintr-un poligon
                 {
                     varfuriPoligonCurent.Add(polygons[i][j]);
                 }
-
-                //impartirea in lanturi
-                int pozMin = 0;
-                int pozMax = 0;
-                for (int a = 0; a < varfuriPoligonCurent.Count; a++)
-                {
-                    if (points[varfuriPoligonCurent[a]].Y < points[pozMin].Y)
-                    {
-                        pozMin = a;
-                    }
-                    if (points[varfuriPoligonCurent[a]].Y > points[pozMax].Y)
-                    {
-                        pozMax = a;
-                    }
-                }
-                List<int> lantA = new List<int>();
-                int punctCurent = pozMin;
-                while(punctCurent != pozMax)
-                {
-                    lantA.Add(varfuriPoligonCurent[punctCurent]);
-                    punctCurent = (punctCurent + 1) % varfuriPoligonCurent.Count;
-                }
-                lantA.Add(varfuriPoligonCurent[pozMax]);
-
-                List<int> lantB = new List<int>();
-                punctCurent = pozMax;
-                while (punctCurent != pozMin)
-                {
-                    lantB.Add(varfuriPoligonCurent[punctCurent]);
-                    punctCurent = (punctCurent + 1) % varfuriPoligonCurent.Count;
-                }
-                lantB.Add(varfuriPoligonCurent[pozMin]);
-
-                //sortare varfuri dupa ordonata
-                for (int k = 0; k < varfuriPoligonCurent.Count - 1; k++)
-                {
-                    for (int l = k + 1; l < varfuriPoligonCurent.Count; l++)
-                    {
-                        if (points[varfuriPoligonCurent[k]].Y > points[varfuriPoligonCurent[l]].Y)
-                        {
-                            int aux = varfuriPoligonCurent[k];
-                            varfuriPoligonCurent[k] = varfuriPoligonCurent[l];
-                            varfuriPoligonCurent[l] = aux;
-                        }
-                    }
-                }
-
-                List<int> stivaVf = new List<int>();
-
-                stivaVf.Add(varfuriPoligonCurent[0]);
-                stivaVf.Add(varfuriPoligonCurent[1]);
-
                 List<Point> punctePoligonCurent = new List<Point>();
-                for(int k = 0; k < varfuriPoligonCurent.Count; k++)
+                for (int k = 0; k < varfuriPoligonCurent.Count; k++)
                 {
                     punctePoligonCurent.Add(points[varfuriPoligonCurent[k]]);
                 }
-
-                for (int l = 2; l < varfuriPoligonCurent.Count - 1; l++)
+                List<Tuple<int, int>> diagonale = new List<Tuple<int, int>>();
+                if(punctePoligonCurent.Count < 3)
                 {
-                    if (lantA.Contains(varfuriPoligonCurent[l]) && lantB.Contains(varfuriPoligonCurent[varfuriPoligonCurent.Count - 1])
-                        || lantB.Contains(varfuriPoligonCurent[l]) && lantA.Contains(varfuriPoligonCurent[varfuriPoligonCurent.Count - 1]))
+                    return;
+                }
+                ////impartirea in lanturi
+                //int pozMin = 0;
+                //int pozMax = 0;
+                //for (int a = 0; a < varfuriPoligonCurent.Count; a++)
+                //{
+                //    if (points[varfuriPoligonCurent[a]].Y < points[pozMin].Y)
+                //    {
+                //        pozMin = a;
+                //    }
+                //    if (points[varfuriPoligonCurent[a]].Y > points[pozMax].Y)
+                //    {
+                //        pozMax = a;
+                //    }
+                //}
+                //List<int> lantA = new List<int>();
+                //int punctCurent = pozMin;
+                //while (punctCurent != pozMax)
+                //{
+                //    lantA.Add(varfuriPoligonCurent[punctCurent]);
+                //    punctCurent = (punctCurent + 1) % varfuriPoligonCurent.Count;
+                //}
+                //lantA.Add(varfuriPoligonCurent[pozMax]);
+
+                //List<int> lantB = new List<int>();
+                //punctCurent = pozMax;
+                //while (punctCurent != pozMin)
+                //{
+                //    lantB.Add(varfuriPoligonCurent[punctCurent]);
+                //    punctCurent = (punctCurent + 1) % varfuriPoligonCurent.Count;
+                //}
+                //lantB.Add(varfuriPoligonCurent[pozMin]);
+
+                ////sortare varfuri dupa ordonata
+                //for (int k = 0; k < varfuriPoligonCurent.Count - 1; k++)
+                //{
+                //    for (int l = k + 1; l < varfuriPoligonCurent.Count; l++)
+                //    {
+                //        if (points[varfuriPoligonCurent[k]].Y > points[varfuriPoligonCurent[l]].Y)
+                //        {
+                //            int aux = varfuriPoligonCurent[k];
+                //            varfuriPoligonCurent[k] = varfuriPoligonCurent[l];
+                //            varfuriPoligonCurent[l] = aux;
+                //        }
+                //    }
+                //}
+                List<int> lantA = new List<int>();
+                List<int> lantOrdonat = OrdonareLexicografica(punctePoligonCurent);
+                List<int> lantOrdonatOriginale = new List<int>();
+                for(int k = 0; k < lantOrdonat.Count; k++)
+                {
+                    lantOrdonatOriginale.Add(varfuriPoligonCurent[lantOrdonat[k]]);
+                }
+                List<int> lantB = new List<int>();
+                for (int f = 0; f < lantOrdonat.Count; f++)
+                {
+                    lantB.Add(lantOrdonat[f]);
+                }
+                lantA.Add(lantB[0]);
+                int p = lantB[0];
+                p++;
+                //lantB.RemoveAt(0);
+                int ultimulPunct = lantB[lantB.Count - 1];
+                while (p != ultimulPunct)
+                {
+                    if (p == lantOrdonat.Count)
+                        p = 0;
+                    lantA.Add(p);
+                    lantB.Remove(p);
+                    p++;
+                }
+                lantA.Add(ultimulPunct);
+                /////////////////
+
+                List<int> stivaVf = new List<int>();
+
+                stivaVf.Add(lantOrdonat[0]);
+                stivaVf.Add(lantOrdonat[1]);
+
+
+                int ultimulVarfSters = 0;
+                for (int l = 2; l < lantOrdonat.Count - 1; l++)//posibil lantOrdonat.Count-1
+                {
+                    if (lantA.Contains(lantOrdonat[l]) && lantB.Contains(lantOrdonat[stivaVf.Count - 1])
+                        || lantB.Contains(lantOrdonat[l]) && lantA.Contains(lantOrdonat[stivaVf.Count - 1]))
                     {
-                        for (int m = 0; m < stivaVf.Count - 1; m++)
+                        for (int n = 0; n < stivaVf.Count; n++)
                         {
-                            if (IsDiagonal(punctePoligonCurent, l, m))
+                            if (IsDiagonal(punctePoligonCurent, lantOrdonat[l], lantOrdonat[n]) && !intersecteazaAlteDiagonale(punctePoligonCurent, diagonale, lantOrdonat[l], lantOrdonat[n]))
                             {
-                                g.DrawLine(penTriang, points[varfuriPoligonCurent[l]], points[varfuriPoligonCurent[m]]);
+                                g.DrawLine(penTriang, punctePoligonCurent[lantOrdonat[l]], punctePoligonCurent[lantOrdonat[n]]);
+                                diagonale.Add(new Tuple<int, int>(lantOrdonat[l], lantOrdonat[n]));
                             }
                         }
                         stivaVf.Clear();
-
-                        stivaVf.Add(varfuriPoligonCurent[l - 1]);
-                        stivaVf.Add(varfuriPoligonCurent[l]);
+                        stivaVf.Add(lantOrdonat[l]);
+                        stivaVf.Add(lantOrdonat[l - 1]);
                     }
                     else
                     {
-                        int ultimElem = -1;
-                        bool ok = true;
-                        int elemVf = varfuriPoligonCurent[varfuriPoligonCurent.Count - 1];
-                        stivaVf.RemoveAt(varfuriPoligonCurent.Count - 1);
+                        ultimulVarfSters = stivaVf[stivaVf.Count - 1];
+                        stivaVf.RemoveAt(stivaVf.Count - 1);
+                        List<int> toRemove = new List<int>();
                         for (int n = 0; n < stivaVf.Count; n++)
                         {
-                            if (IsDiagonal(punctePoligonCurent, l, n))
+                            if (IsDiagonal(punctePoligonCurent, lantOrdonat[l], lantOrdonat[n]) && !intersecteazaAlteDiagonale(punctePoligonCurent, diagonale, lantOrdonat[l], lantOrdonat[n]))
                             {
-                                g.DrawLine(penTriang, points[varfuriPoligonCurent[l]], points[varfuriPoligonCurent[n]]);
-                                stivaVf.RemoveAt(n);
-                                ultimElem = varfuriPoligonCurent[n];
-                                ok = false;
+                                g.DrawLine(penTriang, punctePoligonCurent[lantOrdonat[l]], punctePoligonCurent[lantOrdonat[n]]);
+                                diagonale.Add(new Tuple<int, int>(lantOrdonat[l], lantOrdonat[n]));
+                                ultimulVarfSters = stivaVf[n];
+                                toRemove.Add(lantOrdonat[n]);
                             }
                         }
-                        if (ok)
+                        for (int n = 0; n < toRemove.Count; n++)
                         {
-                            stivaVf.Add(elemVf);
+                            stivaVf.Remove(toRemove[n]);
                         }
-                        else
-                        {
-                            stivaVf.Add(ultimElem);
-                        }
-                        stivaVf.Add(varfuriPoligonCurent[l]);
+                        stivaVf.Add(ultimulVarfSters);
+                        stivaVf.Add(lantOrdonat[l]);
                     }
                 }
-                for (int j = 1; j < stivaVf.Count - 1; j++)
+                while (stivaVf.Count > 1)
                 {
-                    if (IsDiagonal(punctePoligonCurent, varfuriPoligonCurent[varfuriPoligonCurent.Count - 1], j))
+                    if (IsDiagonal(punctePoligonCurent, lantOrdonat[lantOrdonat.Count - 1], lantOrdonat[stivaVf.Count - 1]) && !intersecteazaAlteDiagonale(punctePoligonCurent, diagonale, lantOrdonat[lantOrdonat.Count - 1], lantOrdonat[stivaVf.Count - 1]))
                     {
-                        g.DrawLine(penTriang, points[varfuriPoligonCurent[varfuriPoligonCurent.Count - 1]], points[varfuriPoligonCurent[j]]);
+                        g.DrawLine(penTriang, punctePoligonCurent[lantOrdonat[lantOrdonat.Count - 1]], punctePoligonCurent[lantOrdonat[stivaVf.Count - 1]]);
+                        diagonale.Add(new Tuple<int, int>(lantOrdonat[lantOrdonat.Count - 1], lantOrdonat[stivaVf.Count - 1]));
                     }
+                    stivaVf.RemoveAt(stivaVf.Count - 1);
                 }
             }
+        }
+
+        public List<int> OrdonareLexicografica(List<Point> laturi)
+        {
+            List<int> ordonat = new List<int>(); ;
+            for (int i = 0; i < laturi.Count; i++)
+            {
+                ordonat.Add(i);
+            }
+            for (int i = 0; i < laturi.Count - 1; i++)
+                for (int j = i + 1; j < laturi.Count; j++)
+                {
+                    if (laturi[ordonat[i]].Y > laturi[ordonat[j]].Y)
+                    {
+                        int aux = ordonat[i];
+                        ordonat[i] = ordonat[j];
+                        ordonat[j] = aux;
+                    }
+                    else
+                        if (laturi[ordonat[i]].Y == laturi[ordonat[j]].Y)
+                        if (laturi[ordonat[i]].X > laturi[ordonat[j]].X)
+                        {
+                            int aux = ordonat[i];
+                            ordonat[i] = ordonat[j];
+                            ordonat[j] = aux;
+                        }
+                }
+
+            return ordonat;
         }
 
         #endregion
